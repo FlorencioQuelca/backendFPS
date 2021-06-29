@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//adicionado
+use App\Models\ProyectoEmpresa;
+use App\Http\Requests\CreateProyectoEmpresaRequest;
+use App\Http\Requests\UpdateProyectoEmpresaRequest;
 class ProyectoEmpresaController extends Controller
 {
     /**

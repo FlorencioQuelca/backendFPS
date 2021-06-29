@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\ProyectoPersona;
 
 //adicion de request
-use App\Http\Requests\CreatePersonaRequest;
-use App\Http\Requests\UpdatePersonaRequest;
+use App\Http\Requests\CreateProyectoPersonaRequest;
+use App\Http\Requests\UpdateProyectoPersonaRequest;
 
 
 class ProyectoPersonaController extends Controller

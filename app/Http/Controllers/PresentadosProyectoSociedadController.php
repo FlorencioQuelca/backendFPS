@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//adicionado
+use App\Models\PresentadosProyectoSociedad;
+
+use App\Http\Requests\CreatePresentadosProyectoSociedadRequest;
+use App\Http\Requests\UpdatePresentadosProyectoSociedadRequest;
+
 
 class PresentadosProyectoSociedadController extends Controller
 {
@@ -11,9 +17,16 @@ class PresentadosProyectoSociedadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try{
+            $presentadosProyectoSociedad = PresentadosProyectoSociedad::where('id',' <=',"%{$request->txtBuscar}%")->get();
+           //return $personas;
+              return \response()->json($presentadosProyectoSociedad,200);
+           }
+           catch(\Exception $e){
+            return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
+           }
     }
 
     /**
@@ -22,9 +35,11 @@ class PresentadosProyectoSociedadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(CreatePresentadosProyectoSociedadRequest $request){
+        $imput = $request->all();
+
+        $presentadosProyectoSociedad = PresentadosProyectoSociedad::create($imput);
+        return \response()->json(['res'=> true, 'message'=>'insertado correctamente'],200);
     }
 
     /**
@@ -35,8 +50,11 @@ class PresentadosProyectoSociedadController extends Controller
      */
     public function show($id)
     {
-        //
+        $presentadosProyectoSociedad = PresentadosProyectoSociedad::findOrFail($id);
+        //return $persona;
+        return \response()->json($presentadosProyectoSociedad,200);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -45,9 +63,12 @@ class PresentadosProyectoSociedadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePresentadosProyectoSociedadRequest $request, $id)
     {
-        //
+        $imput = $request->all();
+        $presentadosProyectoSociedad = PresentadosProyectoSociedad::find($id);
+        $presentadosProyectoSociedad ->update($imput);
+        return \response()->json(['res'=> true, 'message'=>'modificado  correctamente'],200);
     }
 
     /**
@@ -58,6 +79,12 @@ class PresentadosProyectoSociedadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            PresentadosProyectoSociedad::destroy($id);
+            return \response()->json(['res'=> true, 'message'=>'Eliminado Correctamente'],200);
+        }
+        catch(\Exception $e){
+            return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
+        }
     }
 }

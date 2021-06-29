@@ -25,15 +25,11 @@ class CreatePersonaRequest extends FormRequest
     {
 
         return [
-            //reglas de validacion:
-            'ci'=> "required|unique:personas,ci",
-            'paterno'=> "required|min:3|max:100",
-            'nombres'=> "required|min:3|max:100",
-            'fechaNacimiento'=> "required|date|after:1921-10-27|before:today",
+            'ci'=> "required|unique:personas, ci",
+            'paterno'=> "required|min:3|max:255",
+            'nombres'=> "required|min:3|max:255",
             'fono1'=> "required",
             'email'=> "required",
-            'genero'=> "required",
-            
         ];
     }
 }

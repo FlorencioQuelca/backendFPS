@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//adicionado
+use App\Models\PresentadosProyectoPersona;
+use App\Http\Requests\CreatePresentadosProyectoPersonaRequest;
+use App\Http\Requests\UpdatePresentadosProyectoPersonaRequest;
+
 class PresentadosProyectoPersonaController extends Controller
 {
     /**
@@ -65,8 +70,6 @@ class PresentadosProyectoPersonaController extends Controller
         $presentadosProyectoPersona = PresentadosProyectoPersona::find($id);
         $presentadosProyectoPersona ->update($imput);
         return \response()->json(['res'=> true, 'message'=>'modificado  correctamente'],200);
-    }
-
     }
 
     /**
