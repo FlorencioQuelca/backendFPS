@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+//adicionado
+use App\Models\ProyectoPersona;
 
-use App\Models\SociedadAccidental;
+//adicion de request
+use App\Http\Requests\CreatePersonaRequest;
+use App\Http\Requests\UpdatePersonaRequest;
 
-use App\Http\Requests\CreateSociedadAccidentalRequest;
-use App\Http\Requests\UpdateSociedadAccidentalRequest;
 
-
-class SociedadAccidentalController extends Controller
+class ProyectoPersonaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +22,15 @@ class SociedadAccidentalController extends Controller
     {
         try{
          
-            $sociedadAccidentals = SociedadAccidental::where('nombre','like',"%{$request->txtBuscar}%")->get();
+            $proyectoPersona = ProyectoPersona::where('fecha',' <=',"{$request->txtBuscar1}")
+                                                ->AndWhere('hora',' <=',"{$request->txtBuscar2}")->get();
            //return $personas;
-              return \response()->json($sociedadAccidentals,200);
+              return \response()->json($proyectoPersona,200);
            }
            catch(\Exception $e){
             return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
            }
+    
     }
 
     /**
@@ -35,11 +39,14 @@ class SociedadAccidentalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateSociedadAccidentalRequest $request)
+    public function store(CreateProyectoEmpresaRequest $request)
     {
         $imput = $request->all();
-        $sociedadAccidental = SociedadAccidental::create($imput);
+        //return $imput;
+     //   $imput['user_id'] = 1
+        $proyectoPersona = ProyectoPersona::create($imput);
         return \response()->json(['res'=> true, 'message'=>'insertado correctamente'],200);
+       // return \response()->json($persona,200);
     }
 
     /**
@@ -50,10 +57,9 @@ class SociedadAccidentalController extends Controller
      */
     public function show($id)
     {
-        //
-        $sociedadAccidental = SociedadAccidental::findOrFail($id);
-        return \response()->json($sociedadAccidental,200);
-        
+        $proyectoPersona = ProyectoPersona::find($id);
+        //return $persona;
+        return \response()->json($proyectoPersona,200);
     }
 
     /**
@@ -63,12 +69,13 @@ class SociedadAccidentalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSociedadAccidentalRequest $request, $id)
+    public function update(UpdateProyectoPersonaRequest $request, $id)
     {
-        $imput = $request->all();
-        $sociedadaccidental = SociedadAccidental::find($id);
-        $sociedadaccidental->update($imput);
-        return \response()->json(['res'=> true, 'message'=>'modificado  correctamente'],200);
+         
+         $imput = $request->all();
+         $proyectoPersona = ProyectoPersona::find($id);
+         $proyectoPersona ->update($imput);
+         return \response()->json(['res'=> true, 'message'=>'modificado  correctamente'],200);
     }
 
     /**
@@ -80,8 +87,8 @@ class SociedadAccidentalController extends Controller
     public function destroy($id)
     {
         try{
-            SociedadAccidental::destroy($id);
-            return \response()->json(['res'=> true, 'message'=>'eliminado Correctamente'],200);
+            ProyectoPersona::destroy($id);
+            return \response()->json(['res'=> true, 'message'=>'Eliminado Correctamente'],200);
         }
         catch(\Exception $e){
             return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);

@@ -15,12 +15,14 @@ class CreateProyectoPersonaTable extends Migration
     {
         Schema::create('proyectoPersonas', function (Blueprint $table) {
             $table->id();
-            $table->string('codigos');
-            $table->string('nombre');
-            $table->date('fecha');
-            $table->time('hora');
+            $table->string('codigo')->nullable();
+            $table->string('nombre')->nullable();
+            $table->date('fecha')->nullable();
+            $table->time('hora')->nullable();
+            $table->string('link')->nullable();
             $table->decimal('precio',20,2)->default(0);
-            $table->integer('proyectos')->default(1);
+            $table->integer('plazoEntrega')->nullable();
+            $table->string('programa')->nullable();
             $table->timestamps();
         });
     }

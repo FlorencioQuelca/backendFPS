@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
     {
        
         \App\Models\User::factory(5)->create();
-         \App\Models\Persona::factory(10)->create();
+         \App\Models\Persona::factory(5)->create();
          \App\Models\Empresa::factory(5)->create();
          \App\Models\SociedadAccidental::factory(5)->create();
+         \App\Models\ProyectoEmpresa::factory(5)->create();
+         \App\Models\proyectoPersona::factory(5)->create();
 
-         \App\Models\DescripcionSociedadAccidental::factory(10)->create();
+       //  \App\Models\DescripcionSociedadAccidental::factory(10)->create();
        /**
       *
          \App\Models\SociedadAccidental::factory(10)

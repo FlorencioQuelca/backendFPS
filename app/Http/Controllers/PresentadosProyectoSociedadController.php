@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DescripcionSociedadAccidental;
-
-
 use Illuminate\Http\Request;
 
-class DescripcionSociedadAccidentalController extends Controller
+class PresentadosProyectoSociedadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,6 @@ class DescripcionSociedadAccidentalController extends Controller
     public function index()
     {
         //
-      $descripcion = DescripcionSociedadAccidental::with(['sociedadAccidental:fono1,id,nombre','empresa:id,nombreEmpresa,email,nit'])->get();
-     // $descripcion = DescripcionSociedadAccidental::all();
-      return $descripcion;
-
     }
 
     /**
@@ -32,12 +25,6 @@ class DescripcionSociedadAccidentalController extends Controller
     public function store(Request $request)
     {
         //
-        $imput = $request->all();
-        //return $imput;
-        $imput['empresa_id'] = auth()->empresa()->id;
-      //  $imput['Socieda_id'] = auth()->empresa()->id;
-        $persona = DescripcionSociedadAccidental::create($imput);
-        return \response()->json(['res'=> true, 'message'=>'insertado correctamente'],200);
     }
 
     /**
@@ -49,9 +36,6 @@ class DescripcionSociedadAccidentalController extends Controller
     public function show($id)
     {
         //
-      $descripcions = DescripcionSociedadAccidental::with(['sociedadAccidental:fono1,id,nombre','empresa:id,nombreEmpresa,email,nit'])->find($id);
-      return $descripcions;
-
     }
 
     /**

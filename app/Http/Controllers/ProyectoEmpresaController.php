@@ -1,28 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-use App\Models\SociedadAccidental;
-
-use App\Http\Requests\CreateSociedadAccidentalRequest;
-use App\Http\Requests\UpdateSociedadAccidentalRequest;
-
-
-class SociedadAccidentalController extends Controller
+class ProyectoEmpresaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $reques)
     {
+        //
         try{
          
-            $sociedadAccidentals = SociedadAccidental::where('nombre','like',"%{$request->txtBuscar}%")->get();
+            $proyectoEmpresa = ProyectoEmpresa::where('fecha',' <=',"{$request->txtBuscar1}")
+                                                 ->andWhere('hora',' <=',"{$request->txtBuscar2}")->get();
            //return $personas;
-              return \response()->json($sociedadAccidentals,200);
+              return \response()->json($proyectoEmpresa,200);
            }
            catch(\Exception $e){
             return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
@@ -35,11 +32,12 @@ class SociedadAccidentalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateSociedadAccidentalRequest $request)
+    public function store(CreateProyectoEmpresaRequest $request)
     {
         $imput = $request->all();
-        $sociedadAccidental = SociedadAccidental::create($imput);
+        $proyectoEmpresa= ProyectoEmpresa::create($imput);
         return \response()->json(['res'=> true, 'message'=>'insertado correctamente'],200);
+       // return \response()->json($persona,200);
     }
 
     /**
@@ -50,10 +48,8 @@ class SociedadAccidentalController extends Controller
      */
     public function show($id)
     {
-        //
-        $sociedadAccidental = SociedadAccidental::findOrFail($id);
-        return \response()->json($sociedadAccidental,200);
-        
+        $proyectoempresa = ProyectoEmpresa::findOrFail($id);
+        return \response()->json($proyectoEmpresa,200);
     }
 
     /**
@@ -63,11 +59,11 @@ class SociedadAccidentalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSociedadAccidentalRequest $request, $id)
+    public function update(UpdateProyectoEmpresaRequest $request, $id)
     {
         $imput = $request->all();
-        $sociedadaccidental = SociedadAccidental::find($id);
-        $sociedadaccidental->update($imput);
+        $proyectoEmpresa = ProyectoEmpresa::find($id);
+        $proyectoEmpresa ->update($imput);
         return \response()->json(['res'=> true, 'message'=>'modificado  correctamente'],200);
     }
 
@@ -80,11 +76,12 @@ class SociedadAccidentalController extends Controller
     public function destroy($id)
     {
         try{
-            SociedadAccidental::destroy($id);
-            return \response()->json(['res'=> true, 'message'=>'eliminado Correctamente'],200);
+            ProyectoEmpresa::destroy($id);
+            return \response()->json(['res'=> true, 'message'=>'Eliminado Correctamente'],200);
         }
         catch(\Exception $e){
             return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
         }
+
     }
 }

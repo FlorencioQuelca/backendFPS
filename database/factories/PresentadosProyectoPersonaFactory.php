@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\DescripcionSociedadAccidental;
+use App\Models\PresentadosProyectoPersona;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DescripcionSociedadAccidentalFactory extends Factory
+class PresentadosProyectoPersonaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = DescripcionSociedadAccidental::class;
+    protected $model = PresentadosProyectoPersona::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class DescripcionSociedadAccidentalFactory extends Factory
     public function definition()
     {
         return [
-            "num"=>rand(0,10),
-      
+            "num"=> rand(0, 10),
         ];
     }
 }

@@ -22,9 +22,16 @@ Route::get("/prueba",function(){
    return \App\Models\Empresa::all();
 });
 
-//PERSONAS
 
-Route::apiResource('personas',\App\Http\Controllers\PersonaController::class); //CRUD de Personas;
+//login
+Route::post('login',[\App\Http\Controllers\UserController::class,'login'])->name('login');
+
+//PERSONAS
+Route::group(['middleware'=>'auth:api'], function(){
+    Route::apiResource('personas',\App\Http\Controllers\PersonaController::class); //CRUD de Personas;
+    Route::post('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('logout');
+    
+});
 //Route::get('personas',[\App\Http\Controllers\PersonaController::class,'index']);
 //Route::get('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'show']);
 //Route::delete('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'destroy']);

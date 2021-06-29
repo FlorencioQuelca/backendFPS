@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('nit_ci',20)->unique();
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
+            $table->string('password');
+            $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

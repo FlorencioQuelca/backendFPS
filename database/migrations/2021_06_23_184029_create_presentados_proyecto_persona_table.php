@@ -15,9 +15,7 @@ class CreatePresentadosProyectoPersonaTable extends Migration
     {
         Schema::create('presentadosProyectopersonas', function (Blueprint $table) {
             $table->id();
-            $table->integer('num')->default(0);
-            /**
-           * 
+            $table->integer('num')->nullable();
             $table->unsignedBigInteger('proyectoPersona_id');
             $table->foreign('proyectoPersona_id')
                             ->references('id')
@@ -38,7 +36,6 @@ class CreatePresentadosProyectoPersonaTable extends Migration
                             ->on('users')
                             ->onUpdate('cascade')
                             ->onDelete('cascade'); 
-                            */             
 
             $table->timestamps();
         });

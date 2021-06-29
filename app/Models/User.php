@@ -10,6 +10,9 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+   //hacer la referencia
+    protected $table ="users";
+
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +24,9 @@ class User extends Authenticatable
         'email',
         'password',
         'nit_ci',
+        'api_token',
+        
+        
     ];
 
     /**
@@ -31,6 +37,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at'
+        
+       
     ];
 
     /**
@@ -42,6 +52,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
    // relaciones
-   
+   public function presentadosProyectosEmpresas()
+   {
+       return $this->hasMany(presentadosProyectosEmpresa::class);
+   }
+   public function presentadosProyectosPersonas()
+   {
+       return $this->hasMany(presentadosProyectosPersona::class);
+   }
+   public function presentadosProyectosSociedads()
+   {
+       return $this->hasMany(presentadosProyectosSociedad::class);
+   }
    
 }
