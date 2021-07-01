@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 //
+use App\Http\Requests\CreateUserRequest;
 
 
 class UserController extends Controller
@@ -35,5 +36,14 @@ class UserController extends Controller
     
             return \response()->json(['res' => true, 'message'=>'Hasta luego gracias por su Visita'], 200);
         }
+
+    public function store(CreateUserRequest $request)
+    {
+       $imput = $request->all();
+       $user = User::create($imput);
+        return \response()->json(['res'=> true, 'message'=>'insertado correctamente'],200);
+      
+    }
+
     
 }

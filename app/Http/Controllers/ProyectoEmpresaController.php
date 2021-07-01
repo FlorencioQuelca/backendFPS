@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ProyectoEmpresa;
 use App\Http\Requests\CreateProyectoEmpresaRequest;
 use App\Http\Requests\UpdateProyectoEmpresaRequest;
+
 class ProyectoEmpresaController extends Controller
 {
     /**
@@ -15,13 +16,14 @@ class ProyectoEmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $reques)
+    public function index(Request $request)
     {
         //
         try{
          
-            $proyectoEmpresa = ProyectoEmpresa::where('fecha',' <=',"{$request->txtBuscar1}")
-                                                 ->andWhere('hora',' <=',"{$request->txtBuscar2}")->get();
+      
+             $proyectoEmpresa = ProyectoEmpresa::where('hora','<=',$request->hora)
+                                                        ->where('fecha','<=',$request->fecha)->get();
            //return $personas;
               return \response()->json($proyectoEmpresa,200);
            }
@@ -52,7 +54,7 @@ class ProyectoEmpresaController extends Controller
      */
     public function show($id)
     {
-        $proyectoempresa = ProyectoEmpresa::findOrFail($id);
+        $proyectoEmpresa = ProyectoEmpresa::findOrFail($id);
         return \response()->json($proyectoEmpresa,200);
     }
 

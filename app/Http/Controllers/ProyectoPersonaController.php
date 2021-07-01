@@ -21,19 +21,22 @@ class ProyectoPersonaController extends Controller
     public function index(Request $request)
     {
         try{
-         
-            $proyectoPersona = ProyectoPersona::where('fecha',' <=',"{$request->txtBuscar1}")
-                                                ->AndWhere('hora',' <=',"{$request->txtBuscar2}")->get();
+            //$imput = $request->all();
+            $proyectoPersona = ProyectoPersona::where('hora','<=',$request->hora)
+                                                ->where('fecha','<=',$request->fecha)->get();
+                                               // ->AndWhere('hora',' <=',"%{$request->txtBuscar2}%")->get();
            //return $personas;
               return \response()->json($proyectoPersona,200);
            }
            catch(\Exception $e){
             return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
            }
+           //if(!is_null($user) && \Hash::check($request->password,$user->password ) &&$request->nit_ci==$user->nit_ci ){
+
     
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

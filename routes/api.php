@@ -25,10 +25,14 @@ Route::get("/prueba",function(){
 
 //login
 Route::post('login',[\App\Http\Controllers\UserController::class,'login'])->name('login');
+Route::post('registrar',[\App\Http\Controllers\UserController::class,'store'])->name('registrar');
 
 //PERSONAS
 Route::group(['middleware'=>'auth:api'], function(){
+
     Route::apiResource('personas',\App\Http\Controllers\PersonaController::class); //CRUD de Personas;
+   
+   
     Route::post('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('logout');
     
 });
@@ -46,3 +50,12 @@ Route::apiResource('sociedadAccidentals',\App\Http\Controllers\SociedadAccidenta
 
 // DESCRIPCION SOCIEDAD ACCIDENTAL
 Route::apiResource('descripcionSociedadAccidentals',\App\Http\Controllers\DescripcionSociedadAccidentalController::class); //CRUD de DescripcionSociedadAccidental;
+
+
+// DESCRIPCION PROYECTOS Persona
+
+Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona;
+
+// DESCRIPCION PROYECTOS Persona
+
+Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class); //CRUD de proyecto Empresa;
