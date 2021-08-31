@@ -30,8 +30,8 @@ Route::apiResource('personas',\App\Http\Controllers\PersonaController::class); /
 //PERSONAS
 Route::group(['middleware'=>'auth:api'], function(){
 
-    
-   
+    Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class,['except' => ['index']]); //CRUD de Proyecto Persona;
+    Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class,['except' => ['index']]); 
    
     Route::post('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('logout');
     
@@ -54,8 +54,10 @@ Route::apiResource('descripcionSociedadAccidentals',\App\Http\Controllers\Descri
 
 // DESCRIPCION PROYECTOS Persona
 
-Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona;
+//Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona;
 
 // DESCRIPCION PROYECTOS Persona
 
-Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class); //CRUD de proyecto Empresa;
+//Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class); //CRUD de proyecto Empresa;
+Route::get('proyectoEmpresa',[\App\Http\Controllers\ProyectoEmpresaController::class,'index'])->name('proyectoEmpresa'); //crud empresa
+Route::get('proyectoPersona',[\App\Http\Controllers\ProyectoPersonaController::class,'index'])->name('proyectoPersona');

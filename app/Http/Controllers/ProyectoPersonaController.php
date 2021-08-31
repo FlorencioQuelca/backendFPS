@@ -23,7 +23,8 @@ class ProyectoPersonaController extends Controller
         try{
             //$imput = $request->all();
             $proyectoPersona = ProyectoPersona::where('hora','<=',$request->hora)
-                                                ->where('fecha','<=',$request->fecha)->get();
+                                                ->where('fecha','<=',$request->fecha)
+                                                ->where('departamento','<=',$request->departamento)->get();
                                                // ->AndWhere('hora',' <=',"%{$request->txtBuscar2}%")->get();
            //return $personas;
               return \response()->json($proyectoPersona,200);

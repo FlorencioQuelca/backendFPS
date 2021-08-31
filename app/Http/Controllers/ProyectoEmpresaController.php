@@ -23,7 +23,8 @@ class ProyectoEmpresaController extends Controller
          
       
              $proyectoEmpresa = ProyectoEmpresa::where('hora','<=',$request->hora)
-                                                        ->where('fecha','<=',$request->fecha)->get();
+                                                        ->where('fecha','<=',$request->fecha)
+                                                        ->where('departamento','<=',$request->departamento)->get();
            //return $personas;
               return \response()->json($proyectoEmpresa,200);
            }

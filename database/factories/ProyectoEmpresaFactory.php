@@ -30,7 +30,8 @@ class ProyectoEmpresaFactory extends Factory
             "programa" => $this->faker->name,
             "precio"=> $this->faker->randomNumber(2),
             "plazoEntrega"=> rand(0,180),
-            "lote" => rand(0,10)
+            "lote" => rand(0,10),
+            "departamento" =>"LA PAZ"
         ];
     }
 }

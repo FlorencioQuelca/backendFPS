@@ -24,6 +24,8 @@ class CreateProyectoEmpresaTable extends Migration
             $table->decimal('precio',20,2)->default(0);
             $table->integer('plazoEntrega')->default(0);
             $table->integer('lote')->default(0);
+            $table->string('departamento')->default('LA PAZ');
+            
             $table->timestamps();
             
         });

@@ -23,6 +23,8 @@ class CreateProyectoPersonaTable extends Migration
             $table->decimal('precio',20,2)->default(0);
             $table->integer('plazoEntrega')->nullable();
             $table->string('programa')->nullable();
+            $table->integer('lote')->default(1);
+            $table->string('departamento')->default('LA PAZ');
             $table->timestamps();
         });
     }

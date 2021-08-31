@@ -19,6 +19,8 @@ class ProyectoPersona extends Model
         "programa",
         "precio",
         "plazoEntrega",
+        "lote",
+        "departamento"
     ];
     protected $hidden =['created_at','updated_at'];
     public function presentadosProyectoPersonas()
