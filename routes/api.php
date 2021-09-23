@@ -53,9 +53,7 @@ Route::apiResource('descripcionSociedadAccidentals',\App\Http\Controllers\Descri
 
 
 // DESCRIPCION PROYECTOS Persona
-
-//Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona;
-
+//Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona
 // DESCRIPCION PROYECTOS Persona
 
 //Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class); //CRUD de proyecto Empresa;
