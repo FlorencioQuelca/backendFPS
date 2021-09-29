@@ -30,7 +30,8 @@ class PersonaFactory extends Factory
             "fechaNacimiento"=>$this->faker->date,
             "fono1"=>25285129,
             "fono2"=>75402473,
-            
+            "datosp"=>"florencio quelca",
+            "nit"=>15112454,
             "email"=>$this->faker->unique()->safeEmail(),
             "genero"=>"female",
             "materno"=>$this->faker->firstName,

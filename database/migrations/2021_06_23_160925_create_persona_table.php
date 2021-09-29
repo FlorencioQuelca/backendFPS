@@ -16,15 +16,15 @@ class CreatePersonaTable extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
             $table->string('ci',20)->unique();    
-            $table->string('paterno',100)->nullable();
-            $table->string('materno',100)->nullable();
-            $table->string('nombres',100)->nullable();
+            $table->string('paterno')->nullable();
+            $table->string('materno')->nullable();
+            $table->string('nombres')->nullable();
             $table->string('datosp')->nullable();
-            
+            $table->integer('nit')->nullable();
             $table->string('grado',10)->nullable();
             $table->text('direccion')->nullable();
             $table->date('fechaNacimiento')->nullable();
-            $table->Integer('fono1')->nullable();
+            $table->integer('fono1')->nullable();
             $table->integer('fono2')->nullable();
             $table->string('email')->nullable();
             $table->string('genero',10)->nullable();

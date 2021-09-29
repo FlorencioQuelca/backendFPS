@@ -19,7 +19,7 @@ class CreateEmpresaTable extends Migration
             $table->string('nit',20)->unique();    
             $table->string('nombreLegal')->nullable();
             $table->text('direccion')->nullable();
-            $table->Integer('fono1')->nullable();
+            $table->integer('fono1')->nullable();
             $table->integer('fono2')->nullable();
             $table->string('email')->nullabe();
             $table->string('departamento',20)->nullable();

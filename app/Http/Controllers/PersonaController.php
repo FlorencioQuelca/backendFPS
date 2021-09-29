@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 
 //adicionado
 use App\Models\Persona;
-
 //adicion de request
+use Illuminate\Http\Request;
 use App\Http\Requests\CreatePersonaRequest;
 use App\Http\Requests\UpdatePersonaRequest;
 
@@ -34,7 +34,10 @@ class PersonaController extends Controller
        //  $imput = $request->all();
        try{
          
-        $personas = Persona::where('ci','like',"%{$request->txtBuscar}%")->get();
+        $personas = Persona::where('ci','like',"%{$request->txtBuscar}%")
+                            //->whereCi($request->txtBuscar)
+                            ->orWhere('nombres', 'like', "%{$request->txtBuscar}%")
+                            ->get();
        //return $personas;
           return \response()->json($personas,200);
        }
@@ -60,8 +63,8 @@ class PersonaController extends Controller
         $persona = Persona::create($imput);
         return \response()->json(['res'=> true, 'message'=>'insertado correctamente'],200);
        // return \response()->json($persona,200);
-    }
-
+   }
+    
     /**
      * Display the specified resource.
      *

@@ -15,6 +15,8 @@ class Persona extends Model
         "paterno",
         "materno",
         "nombres",
+        "datosp",
+        "nit",
         "grado",
         "direccion",
         "fechaNacimiento",
