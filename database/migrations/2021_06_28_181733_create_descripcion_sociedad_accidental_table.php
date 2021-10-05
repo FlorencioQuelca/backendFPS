@@ -18,6 +18,8 @@ class CreateDescripcionSociedadAccidentalTable extends Migration
             $table->integer('num')->nullable();
             $table->unsignedBigInteger('empresa_id');
             $table->unsignedBigInteger('sociedadAccidental_id');
+            $table->integer('participacion');
+            
             $table->foreign('empresa_id')
                             ->references('id')
                             ->on('empresas')

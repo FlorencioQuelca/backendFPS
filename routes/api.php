@@ -27,35 +27,45 @@ Route::get("/prueba",function(){
 Route::post('login',[\App\Http\Controllers\UserController::class,'login'])->name('login');
 Route::post('registrar',[\App\Http\Controllers\UserController::class,'store'])->name('registrar');
 
-Route::apiResource('personas',\App\Http\Controllers\PersonaController::class); //CRUD de Personas;
-//PERSONAS
-//Route::group(['middleware'=>'auth:api'], function(){
+Route::get('proyectoEmpresa',[\App\Http\Controllers\ProyectoEmpresaController::class,'index'])->name('proyectoEmpresa'); //crud empresa
+Route::get('proyectoPersona',[\App\Http\Controllers\ProyectoPersonaController::class,'index'])->name('proyectoPersona');
 
-  //  Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class,['except' => ['index']]); //CRUD de Proyecto Persona;
-   // Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class,['except' => ['index']]); 
+Route::get('personas',[\App\Http\Controllers\PersonaController::class,'index'])->name('personas');
+Route::get('empresas',[\App\Http\Controllers\EmpresaController::class,'index'])->name('empresas');
+Route::get('sociedadAccidentals',[\App\Http\Controllers\SociedadAccidentalController::class,'index'])->name('sociedadAccidentals');
+
+
+Route::group(['middleware'=>'auth:api'], function(){
+
+   Route::apiResource('personas',\App\Http\Controllers\PersonaController::class,['except' => ['index']]); //CRUD de Personas;
+   Route::apiResource('empresas',\App\Http\Controllers\EmpresaController::class,['except' => ['index']]); //CRUD de Empresa;
+   Route::apiResource('sociedadAccidentals',\App\Http\Controllers\SociedadAccidentalController::class,['except' => ['index']]); //CRUD de SociedadAccidental;
+
+
+   Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class,['except' => ['index']]); //CRUD de Proyecto Persona;
+   Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class,['except' => ['index']]); 
    
   //  Route::post('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('logout');
     
-//});
+});
 //Route::get('personas',[\App\Http\Controllers\PersonaController::class,'index']);
 //Route::get('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'show']);
 //Route::delete('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'destroy']);
 //Route::post('personas',[\App\Http\Controllers\PersonaController::class,'store']);
 //Route::put('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'update']);
-
+//PERSONAS
+//Route::apiResource('personas',\App\Http\Controllers\PersonaController::class); //CRUD de Personas
 //EMPRESA
-Route::apiResource('empresas',\App\Http\Controllers\EmpresaController::class); //CRUD de Empresa;
+//Route::apiResource('empresas',\App\Http\Controllers\EmpresaController::class); //CRUD de Empresa;
 
 // SOCIEDAD ACCIDENTAL
-Route::apiResource('sociedadAccidentals',\App\Http\Controllers\SociedadAccidentalController::class); //CRUD de SociedadAccidental;
+//Route::apiResource('sociedadAccidentals',\App\Http\Controllers\SociedadAccidentalController::class); //CRUD de SociedadAccidental;
 
 // DESCRIPCION SOCIEDAD ACCIDENTAL
 Route::apiResource('descripcionSociedadAccidentals',\App\Http\Controllers\DescripcionSociedadAccidentalController::class); //CRUD de DescripcionSociedadAccidental;
 
 
 // DESCRIPCION PROYECTOS Persona
-Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona
+//Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class); //CRUD de Proyecto Persona
 // DESCRIPCION PROYECTOS Persona
-Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class); //CRUD de proyecto Empresa;
-//Route::get('proyectoEmpresa',[\App\Http\Controllers\ProyectoEmpresaController::class,'index'])->name('proyectoEmpresa'); //crud empresa
-//Route::get('proyectoPersona',[\App\Http\Controllers\ProyectoPersonaController::class,'index'])->name('proyectoPersona');
+//Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class); //CRUD de proyecto Empresa;

@@ -28,7 +28,9 @@ class SociedadAccidentalFactory extends Factory
         "fono1"=>rand(75402473,99999999),   
         "fono2"=>rand(75402473,99999999),   
         "email"=>$this->faker->unique()->safeEmail(),
-        "observacion"=>$this->faker->text
+        "observacion"=>$this->faker->text,
+        "departamento"=>$this->faker->city,
+        "codigo"=>rand(75402473,99999999), 
         ];
     }
 }

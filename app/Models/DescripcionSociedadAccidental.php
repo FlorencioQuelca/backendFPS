@@ -14,6 +14,7 @@ class DescripcionSociedadAccidental extends Model
         "num",
         "empresa_id",
         "sociedadAccidental_id",
+        "participacion",
     ];
 
     protected $hidden =['created_at','updated_at'];

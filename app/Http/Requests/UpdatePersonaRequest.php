@@ -32,6 +32,8 @@ class UpdatePersonaRequest extends FormRequest
             'fono1'=> "required",
             'email'=> "required",
             'genero'=> "required",
+            'nit'=> "required",
+            
         ];
     }
 }

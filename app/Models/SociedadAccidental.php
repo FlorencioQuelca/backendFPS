@@ -17,6 +17,8 @@ class SociedadAccidental extends Model
         "fono2",
         "email",
         "observacion",
+        "departamento",
+        "codigo",
     ];
     protected $hidden =['created_at','updated_at'];
     //relaciones

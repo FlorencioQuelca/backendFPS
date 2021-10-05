@@ -17,13 +17,16 @@ class EmpresaController extends Controller
     public function index(Request $request)
     {
         try{
-            $empresa = Empresa::where('nit','like',"%{$request->txtBuscar}%")->get();
-           //return $personas;
+            $empresa = Empresa::where('nit','like',"%{$request->txtBuscar}%")
+           //return $personas;//->whereCi($request->txtBuscar)
+                            ->orWhere('nombreEmpresa', 'like', "%{$request->txtBuscar}%")
+                            ->get();
               return \response()->json($empresa,200);
            }
             catch(\Exception $e){
             return \response()->json(['res'=> false, 'message'=>$e->getMessage()],200);
            }
+           
     }
 
     /**

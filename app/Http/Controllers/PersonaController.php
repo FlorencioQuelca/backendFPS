@@ -36,7 +36,7 @@ class PersonaController extends Controller
          
         $personas = Persona::where('ci','like',"%{$request->txtBuscar}%")
                             //->whereCi($request->txtBuscar)
-                            ->orWhere('nombres', 'like', "%{$request->txtBuscar}%")
+                            ->orWhere('datosp', 'like', "%{$request->txtBuscar}%")
                             ->get();
        //return $personas;
           return \response()->json($personas,200);

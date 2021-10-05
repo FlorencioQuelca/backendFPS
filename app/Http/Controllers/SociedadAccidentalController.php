@@ -20,7 +20,9 @@ class SociedadAccidentalController extends Controller
     {
         try{
          
-            $sociedadAccidentals = SociedadAccidental::where('nombre','like',"%{$request->txtBuscar}%")->get();
+            $sociedadAccidentals = SociedadAccidental::where('nombre','like',"%{$request->txtBuscar}%")
+                                                    ->orWhere('codigo', 'like', "%{$request->txtBuscar}%")
+                                                    ->get();
            //return $personas;
               return \response()->json($sociedadAccidentals,200);
            }

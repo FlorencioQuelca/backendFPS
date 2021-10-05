@@ -28,6 +28,8 @@ class CreateSociedadAccidentalRequest extends FormRequest
             'nombreLegal'=> "required|min:10|max:255",
             'fono1'=> "required",
             'email'=> "required",
+            'codigo'=> "required",
+            
         ];
     }
 }
