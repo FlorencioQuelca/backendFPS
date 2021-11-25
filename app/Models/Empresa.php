@@ -24,9 +24,9 @@ class Empresa extends Model
     // ocultar
     protected $hidden =['created_at','updated_at'];
 
-    //relaciones
-    public function descripcionSociedadAccidentals(){
-        return $this->hasMany(DescipcionSociedadAccidental::class);
+    //relacion uno a muchos
+    public function empresas(){
+        return $this->hasMany(Empresa::class);
     }
    
 }

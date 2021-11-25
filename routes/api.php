@@ -35,19 +35,23 @@ Route::get('empresas',[\App\Http\Controllers\EmpresaController::class,'index'])-
 Route::get('sociedadAccidentals',[\App\Http\Controllers\SociedadAccidentalController::class,'index'])->name('sociedadAccidentals');
 
 
-Route::group(['middleware'=>'auth:api'], function(){
+
+//Route::group(['middleware'=>'auth:api'], function(){
+
 
    Route::apiResource('personas',\App\Http\Controllers\PersonaController::class,['except' => ['index']]); //CRUD de Personas;
    Route::apiResource('empresas',\App\Http\Controllers\EmpresaController::class,['except' => ['index']]); //CRUD de Empresa;
    Route::apiResource('sociedadAccidentals',\App\Http\Controllers\SociedadAccidentalController::class,['except' => ['index']]); //CRUD de SociedadAccidental;
 
+   //ruta asociados sociedad accidental
+   Route::apiResource('asociados',\App\Http\Controllers\Asociado::class);
 
    Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class,['except' => ['index']]); //CRUD de Proyecto Persona;
    Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class,['except' => ['index']]); 
    
   //  Route::post('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('logout');
     
-});
+//});
 //Route::get('personas',[\App\Http\Controllers\PersonaController::class,'index']);
 //Route::get('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'show']);
 //Route::delete('personas/{persona}',[\App\Http\Controllers\PersonaController::class,'destroy']);

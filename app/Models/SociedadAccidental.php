@@ -21,9 +21,9 @@ class SociedadAccidental extends Model
         "codigo",
     ];
     protected $hidden =['created_at','updated_at'];
-    //relaciones
-    public function descripcionSociedadAccidentals(){
-        return $this->hasMany(DescripcionSociedadAccidental::class);
+    //relaciones de uno a muchos
+    public function asociados(){
+        return $this->hasMany('app\Models\Asociado');
     }
    
 }
