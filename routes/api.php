@@ -41,10 +41,12 @@ Route::get('sociedadAccidentals',[\App\Http\Controllers\SociedadAccidentalContro
 
    Route::apiResource('personas',\App\Http\Controllers\PersonaController::class,['except' => ['index']]); //CRUD de Personas;
    Route::apiResource('empresas',\App\Http\Controllers\EmpresaController::class,['except' => ['index']]); //CRUD de Empresa;
-   Route::apiResource('sociedadAccidentals',\App\Http\Controllers\SociedadAccidentalController::class,['except' => ['index']]); //CRUD de SociedadAccidental;
-
+  //sociedad
+   Route::apiResource('sociedad',\App\Http\Controllers\SociedadController::class,['except' => ['index']]); //CRUD de SociedadAccidental;
+   Route::get('/detalle1',[\App\Http\Controllers\SociedadController::class,'detalle1']);
    //ruta asociados sociedad accidental
-   Route::apiResource('asociados',\App\Http\Controllers\Asociado::class);
+   Route::apiResource('asociados',\App\Http\Controllers\AsociadoController::class);
+   Route::get('/detalle',[\App\Http\Controllers\AsociadoController::class,'detalle']);
 
    Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class,['except' => ['index']]); //CRUD de Proyecto Persona;
    Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class,['except' => ['index']]); 

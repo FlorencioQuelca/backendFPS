@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asociado;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class AsociadoController extends Controller
 {
     /**
@@ -14,9 +14,23 @@ class AsociadoController extends Controller
      */
     public function index()
     {
-        return Asociado::all();
-    }
+     //   return Asociado::all();
+     $productos = Asociado::with(['empresa','sociedad'])->get();
+                              //  ->whereId($request->txtBuscar)
+                                //->orWhere('nombre', 'like', "%{$request->txtBuscar}%")
+                                //->get();
 
+        return \response()->json($productos, 200);
+    }
+   public function  detalle(){
+
+    $asociado=DB::select('(select * from asociados
+      )
+    ');
+   
+
+     return \response()->json($asociado, 200);
+   }
     /**
      * Show the form for creating a new resource.
      *

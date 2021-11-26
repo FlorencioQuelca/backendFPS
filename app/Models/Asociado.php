@@ -23,11 +23,11 @@ class Asociado extends Model
     
 
     //relacion uno a muchos (inversa)
-    public function sociedadAccidental(){
-        return $this->belongTo('App\Models\SociedadAccidental');
+    public function sociedad(){
+        return $this->belongsTo(Sociedad::class);
     }
     //relacion uno a muchos (inversa)
     public function empresa(){
-        return $this->belongTo('App\Models\Empresa');
+        return $this->belongsTo(Empresa::class);
     }
 }
