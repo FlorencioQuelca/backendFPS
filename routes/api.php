@@ -32,7 +32,7 @@ Route::get('proyectoPersona',[\App\Http\Controllers\ProyectoPersonaController::c
 
 Route::get('personas',[\App\Http\Controllers\PersonaController::class,'index'])->name('personas');
 Route::get('empresas',[\App\Http\Controllers\EmpresaController::class,'index'])->name('empresas');
-Route::get('sociedadAccidentals',[\App\Http\Controllers\SociedadAccidentalController::class,'index'])->name('sociedadAccidentals');
+Route::get('sociedades',[\App\Http\Controllers\SociedadController::class,'index'])->name('sociedades');
 
 
 
@@ -42,12 +42,15 @@ Route::get('sociedadAccidentals',[\App\Http\Controllers\SociedadAccidentalContro
    Route::apiResource('personas',\App\Http\Controllers\PersonaController::class,['except' => ['index']]); //CRUD de Personas;
    Route::apiResource('empresas',\App\Http\Controllers\EmpresaController::class,['except' => ['index']]); //CRUD de Empresa;
   //sociedad
-   Route::apiResource('sociedad',\App\Http\Controllers\SociedadController::class,['except' => ['index']]); //CRUD de SociedadAccidental;
-   Route::get('/detalle1',[\App\Http\Controllers\SociedadController::class,'detalle1']);
+   Route::apiResource('sociedades',\App\Http\Controllers\SociedadController::class,['except' => ['index']]); //CRUD de SociedadAccidental;
+  //proyecto
+  Route::apiResource('proyectos',\App\Http\Controllers\ProyectoController::class); //CRUD de SociedadAccidental;
+  Route::apiResource('detalle',\App\Http\Controllers\detalleController::class);
+   
+   //Route::apiResource('sociedad',[\App\Http\Controllers\SociedadController::class,'sociedad']);
    //ruta asociados sociedad accidental
    Route::apiResource('asociados',\App\Http\Controllers\AsociadoController::class);
-   Route::get('/detalle',[\App\Http\Controllers\AsociadoController::class,'detalle']);
-
+   
    Route::apiResource('proyectoPersona',\App\Http\Controllers\ProyectoPersonaController::class,['except' => ['index']]); //CRUD de Proyecto Persona;
    Route::apiResource('proyectoEmpresa',\App\Http\Controllers\ProyectoEmpresaController::class,['except' => ['index']]); 
    

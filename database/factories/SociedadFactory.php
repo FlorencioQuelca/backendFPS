@@ -22,7 +22,7 @@ class SociedadFactory extends Factory
     public function definition()
     {
         return [
-            "nombre"=>$this->faker->unique()->lastName,
+        "nombre"=>$this->faker->unique()->lastName,
         "nombreLegal"=>$this->faker->name,
         "direccion"=>$this->faker->text,
         "fono1"=>rand(75402473,99999999),   

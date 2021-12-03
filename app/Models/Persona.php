@@ -28,5 +28,10 @@ class Persona extends Model
     ];
     protected $hidden =['created_at','updated_at'];
     
+    //relacion uno a muchos polimorfica
+   public function detalles(){
+    return $this->morphMany('App\Models\Detalle','detalletable');
+}
+
 }
    

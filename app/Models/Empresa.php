@@ -28,5 +28,10 @@ class Empresa extends Model
     public function empresas(){
         return $this->hasMany(Empresa::class);
     }
+   //relacion uno a muchos polimorfica
+   public function detalles(){
+       return $this->morphMany('App\Models\Detalle','detalletable');
+   }
    
+
 }

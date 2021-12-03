@@ -14,32 +14,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
        
-        \App\Models\User::factory(10)->create();
+         \App\Models\User::factory(10)->create();
          \App\Models\Persona::factory(10)->create();
          \App\Models\Empresa::factory(10)->create();
          \App\Models\Sociedad::factory(10)->create();
-         \App\Models\ProyectoEmpresa::factory(10)->create();
-         \App\Models\ProyectoPersona::factory(10)->create();
+        
+         $this->call([
+            TipoSeeder::class,
+            ProgramaSeeder::class,
+            DepartamentoSeeder::class,
+            AsociadoSeeder::class,
+            
+            UserSeeder::class,
+            PermisoSeeder::class,
+            PermisoUserSeeder::class,
+            ProyectoSeeder::class,
+          
+        ]);
 
-       //  \App\Models\DescripcionSociedadAccidental::factory(10)->create();
-       /**
-      *
-         \App\Models\SociedadAccidental::factory(10)
-                                        ->hasEmpresas(2)
-                                        ->create();
-                                       
-        for ($i = 0; $i < 5; $i++) {
-                $Empresa = factory(App\Empresa::class)->create();
-
-                $SociedadAccidental = factory(App\SociedadAccidental::class)->create();
-                $DescripcionSociedadAccidental = factory(App\DescripcionSociedadAccidental::class)->create();
-
-                DB::table('DescripcionSociedadAccidental_descripcionSociedadAccidental')->insert([
-                    'Empresa_id' => $Empresa->id,
-                    'Sociedad_id' => $SociedadAccidental->id,
-                    'DescipcionSociedadAccidental_id' => $DescripcionSociedadAccidental->id
-                ]);
-            }
-        */ 
-            }
+    }
 }

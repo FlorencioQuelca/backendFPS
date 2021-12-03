@@ -27,5 +27,10 @@ class Sociedad extends Model
     public function asociados(){
         return $this->hasMany(Asociado::class)->with('empresa');
     }
+    //relacion uno a muchos polimorfica
+   public function detalles(){
+    return $this->morphMany('App\Models\Detalle','detalletable');
+}
+
    
 }

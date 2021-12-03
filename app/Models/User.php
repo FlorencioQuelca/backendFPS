@@ -23,7 +23,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'nit_ci',
         'api_token',
         
         
@@ -52,17 +51,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
    // relaciones
-   public function presentadosProyectosEmpresas()
-   {
-       return $this->hasMany(presentadosProyectosEmpresa::class);
-   }
-   public function presentadosProyectosPersonas()
-   {
-       return $this->hasMany(presentadosProyectosPersona::class);
-   }
-   public function presentadosProyectosSociedads()
-   {
-       return $this->hasMany(presentadosProyectosSociedad::class);
-   }
+     public function permisos()
+     {
+         return $this->belongsToMany(Permiso::class);
+     }
    
 }
